@@ -8,6 +8,8 @@ import 'package:rule_engine_ttakeoff/bloc/login/AuthenticationEvents.dart';
 import 'package:rule_engine_ttakeoff/bloc/login/LoginEvent.dart';
 import 'package:rule_engine_ttakeoff/bloc/login/LoginState.dart';
 
+import 'AuthenticationEvents.dart';
+
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final UserRepository userRepository;
@@ -31,10 +33,16 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           username: event.username,
           password: event.password,
         );
+        if(token != '') {
+          authenticationBloc.add(LoggedIn(token: token));
+          yield LoginInitial();
+        } else {
+        authenticationBloc.add(LoggedOut());
+        yield LoginFailure(error: 'Login Failed. Please Try again');
+        }
 
-        authenticationBloc.add(LoggedIn(token: token));
-        yield LoginInitial();
       } catch (error) {
+        authenticationBloc.add(LoggedOut());
         yield LoginFailure(error: error.toString());
       }
     }

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:rule_engine_ttakeoff/Login/LoginModel.dart';
+import 'package:rule_engine_ttakeoff/login/LoginModel.dart';
 import '../constants/ApplicationConstants.dart';
 
 class LoginUtils {

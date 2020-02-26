@@ -6,6 +6,8 @@ import 'package:rule_engine_ttakeoff/Login/UserRepository.dart';
 import 'package:rule_engine_ttakeoff/bloc/login/AuthenticationEvents.dart';
 import 'package:rule_engine_ttakeoff/bloc/login/AuthenticationStates.dart';
 
+import 'AuthenticationEvents.dart';
+
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
@@ -40,6 +42,9 @@ class AuthenticationBloc
     if (event is LoggedOut) {
       yield AuthenticationLoading();
       await userRepository.deleteToken();
+      yield AuthenticationUnauthenticated();
+    }
+    if(event is LoginError) {
       yield AuthenticationUnauthenticated();
     }
   }

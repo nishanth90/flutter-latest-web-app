@@ -1,13 +1,22 @@
 import 'package:flutter/foundation.dart';
+import 'package:rule_engine_ttakeoff/login/LoginModel.dart';
 import 'package:rule_engine_ttakeoff/shared_preference/SharedPreferenceUtil.dart';
 import 'package:rule_engine_ttakeoff/util/LoginUtils.dart';
+
+import '../util/LoginUtils.dart';
+
 
 class UserRepository {
   Future<String> authenticate({
     @required String username,
     @required String password,
   }) async {
-    return LoginUtils().login(username, password).then((value) => value.getToken().accessToken);
+    String token = '';
+    LoginModel model = await LoginUtils().login(username, password);
+    if(model != null) {
+      token = model.getToken().accessToken;
+    }
+    return token;
   }
 
   Future<void> deleteToken() async {
