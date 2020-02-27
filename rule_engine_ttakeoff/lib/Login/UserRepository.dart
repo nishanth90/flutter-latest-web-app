@@ -21,13 +21,13 @@ class UserRepository {
 
   Future<void> deleteToken() async {
     /// delete from keystore/keychain
-    StorageUtil.deleteToken("token");
+    StorageUtil().deleteToken("token");
     return;
   }
 
   Future<void> persistToken(String token) async {
     /// write to keystore/keychain
-    StorageUtil.putString("token", token);
+    StorageUtil().putString("token", token);
     return;
   }
 

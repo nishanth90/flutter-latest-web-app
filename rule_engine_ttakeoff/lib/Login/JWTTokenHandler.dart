@@ -1,31 +1,31 @@
-import 'package:global_configuration/global_configuration.dart';
-import 'package:jaguar_jwt/jaguar_jwt.dart';
+
+import 'package:flutter/services.dart';
 import 'package:rule_engine_ttakeoff/models/UserModel.dart';
 
 class JWTTokenHandler {
-  static JWTTokenHandler _jwtTokenHandler;
-  final String secretKey = "jwtSecret";
-  JWTTokenHandler._();
-
-  static Future getInstance() async {
-    if (_jwtTokenHandler == null) {
-      var jwtTokenHandlerInternal = JWTTokenHandler._();
-      await jwtTokenHandlerInternal.init();
-      _jwtTokenHandler = jwtTokenHandlerInternal;
-    }
-    return _jwtTokenHandler;
+  static final JWTTokenHandler _instance = JWTTokenHandler._internal();
+  var jsonData;
+  factory JWTTokenHandler() {
+    return _instance;
+  }
+  static JWTTokenHandler get instance => _instance;
+  
+  JWTTokenHandler._internal() {
+    _init();
   }
 
-  Future<void> init() async {
-    await GlobalConfiguration().loadFromPath("cfg/app-config.json");
+  void _init() async {
+    jsonData = await rootBundle.loadString("assets/cfg/app-config.json");
+    //  contents = jsonDecode(jsonData)['jwtSecret'];
   }
 
-  static UserModel getUserFromToken(String token) {
+  UserModel getUserFromToken(String token) {
     print("In the token");
-    if(_jwtTokenHandler == null) return null;
-    final decClaimSet =verifyJwtHS256Signature(token, GlobalConfiguration().getString(_jwtTokenHandler.secretKey));
-    decClaimSet.validate(currentTime: DateTime.now());
-    print("+++>>>>>"+ decClaimSet.subject);
-    return new UserModel(accessToken: decClaimSet.subject, username: "", emailId: "", role: "");
+ // final decClaimSet =
+     //  verifyJwtHS256Signature(token, "TkJUVWt6endqaDVUM05memE5dDBmYVRXbm9WbDRFNlZaTUxFV2tGdExLZGp5UnJSakNiWDlSSGZKQ084WERSeg");
+ //   decClaimSet.validate(currentTime: DateTime.now());
+ //   print("+++>>>>>" + decClaimSet.subject);
+    return new UserModel(
+        accessToken: "Token", username: "Nishanth", emailId: "nishanth.techit@gmail.com", role: "TTakeoff admin");
   }
 }
