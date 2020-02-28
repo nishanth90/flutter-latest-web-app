@@ -30,6 +30,7 @@ dependencies:
   vertical_tabs:
   jaguar_jwt: 2.1.6
   global_configuration: ^1.5.0
+  charts_flutter:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3

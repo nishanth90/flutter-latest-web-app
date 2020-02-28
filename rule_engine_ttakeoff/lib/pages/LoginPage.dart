@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rule_engine_ttakeoff/Login/LoginModel.dart';
-import 'package:rule_engine_ttakeoff/Login/UserRepository.dart';
+import 'package:rule_engine_ttakeoff/login/LoginModel.dart';
+import 'package:rule_engine_ttakeoff/login/UserRepository.dart';
 import 'package:rule_engine_ttakeoff/bloc/login/AuthenticationBloc.dart';
 import 'package:rule_engine_ttakeoff/bloc/login/LoginBloc.dart';
 import 'package:rule_engine_ttakeoff/pages/LoginForm.dart';

@@ -4,6 +4,7 @@ import 'package:rule_engine_ttakeoff/bloc/login/AuthenticationBloc.dart';
 import 'package:rule_engine_ttakeoff/bloc/login/AuthenticationEvents.dart';
 import 'package:rule_engine_ttakeoff/login/JWTTokenHandler.dart';
 import 'package:rule_engine_ttakeoff/models/UserModel.dart';
+import 'package:rule_engine_ttakeoff/pages/rules/Drawer.dart';
 import 'package:rule_engine_ttakeoff/pages/rules/tabs/Tab1.dart';
 import 'package:rule_engine_ttakeoff/pages/rules/tabs/Tab2.dart';
 import 'package:rule_engine_ttakeoff/pages/rules/tabs/Tab3.dart';
@@ -16,7 +17,7 @@ class RulesPage extends StatefulWidget {
   RulesPageState createState() => RulesPageState();
 }
 
-class RulesPageState extends State<RulesPage>{
+class RulesPageState extends State<RulesPage> {
   Future<SharedPreferences> _instance;
   JWTTokenHandler _jwtInstance;
 
@@ -26,7 +27,6 @@ class RulesPageState extends State<RulesPage>{
     _jwtInstance = JWTTokenHandler.instance;
     super.initState();
   }
-
 
   Future<UserModel> getUser() async {
     String token = await _instance.then((value) => value.getString("token"));
@@ -38,31 +38,13 @@ class RulesPageState extends State<RulesPage>{
     return DefaultTabController(
       length: 7,
       child: Scaffold(
-        drawer: Drawer(
-          child: Column(
-            children: <Widget>[
-              FutureBuilder(
-                future: getUser(),
-                builder: (BuildContext context, AsyncSnapshot snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done) {
-                    return UserAccountsDrawerHeader(
-                        accountName: Text(snapshot.data.getUserName()),
-                        accountEmail: Text(snapshot.data.getEmailId()),
-                        );
-                  } else {
-                    return CircularProgressIndicator();
-                  }
-                },
-              ),
-            ],
-          ),
-        ),
+        drawer: CustomDrawer(BlocProvider.of<AuthenticationBloc>(context)),
         appBar: AppBar(
           backgroundColor: Color.fromRGBO(93, 195, 232, 0.5),
           centerTitle: true,
           actions: <Widget>[
             IconButton(
-                icon: Icon(Icons.power),
+                icon: Icon(Icons.power_settings_new),
                 onPressed: () {
                   BlocProvider.of<AuthenticationBloc>(context).add(LoggedOut());
                 })
@@ -161,6 +143,4 @@ class RulesPageState extends State<RulesPage>{
       ),
     );
   }
-
-
 }
