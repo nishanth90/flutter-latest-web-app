@@ -12,3 +12,7 @@ class AuthenticationAuthenticated extends AuthenticationState {}
 class AuthenticationUnauthenticated extends AuthenticationState {}
 
 class AuthenticationLoading extends AuthenticationState {}
+
+class Navigation extends AuthenticationState{}
+
+class RulesPageNavigation extends AuthenticationState{}

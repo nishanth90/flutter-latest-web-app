@@ -25,3 +25,7 @@ class LoggedIn extends AuthenticationEvent {
 class LoggedOut extends AuthenticationEvent {}
 
 class LoginError extends AuthenticationEvent {}
+
+class NotificationDashBoardNavEvent extends AuthenticationEvent{}
+
+class RulesPageNavEvent extends AuthenticationEvent{}

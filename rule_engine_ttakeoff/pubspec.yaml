@@ -23,8 +23,8 @@ dependencies:
   rxdart:
   meta:
   equatable:
-  bloc:
-  flutter_bloc:
+  bloc: ^3.0.0
+  flutter_bloc: ^3.2.0
   shared_preferences:
   shared_preferences_web:
   vertical_tabs:
@@ -44,7 +44,10 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
+  fonts:
+        - family: Righteous
+          fonts:
+            - asset: fonts/Righteous-Regular.ttf
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

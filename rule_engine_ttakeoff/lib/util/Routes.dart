@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:rule_engine_ttakeoff/login/UserRepository.dart';
 import 'package:rule_engine_ttakeoff/pages/LoginPage.dart';
 import 'package:rule_engine_ttakeoff/pages/RulesPage.dart';
-import 'package:rule_engine_ttakeoff/pages/dashboard/graphs/notification_graph.dart';
 
 class RouteGenerator {
 
@@ -10,6 +9,7 @@ class RouteGenerator {
     // Getting arguments passed in while calling Navigator.pushNamed
     final args = settings.arguments;
     final userRepository = UserRepository();
+
     switch (settings.name) {
       case '/home':
         return MaterialPageRoute(builder: (_) => LoginPage(userRepository: userRepository));
@@ -25,8 +25,8 @@ class RouteGenerator {
         // If args is not of the correct type, return an error page.
         // You can also throw an exception while in development.
         return _errorRoute();
-      case '/notificationDashboard':
-         return MaterialPageRoute(builder: (_) => NotificationGraphs());
+      case '/notification':
+         return MaterialPageRoute(builder: (_) => LoginPage());
       default:
         // If there is no such named route in the switch statement, e.g. /third
         return _errorRoute();

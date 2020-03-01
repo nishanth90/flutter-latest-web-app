@@ -36,7 +36,7 @@ class _LoginState extends State<LoginPage> {
                 Container(
                   width: MediaQuery.of(context).size.width / 3.3,
                   height: MediaQuery.of(context).size.height,
-                  color: Colors.lightBlue[600],
+                  color: Color(0xff00BCD4),
                   child: Padding(
                     padding:
                         EdgeInsets.only(top: 85.0, right: 50.0, left: 50.0),

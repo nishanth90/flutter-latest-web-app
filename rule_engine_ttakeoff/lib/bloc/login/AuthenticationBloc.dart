@@ -47,5 +47,13 @@ class AuthenticationBloc
     if(event is LoginError) {
       yield AuthenticationUnauthenticated();
     }
+
+    if(event is NotificationDashBoardNavEvent){
+      yield Navigation();
+    }
+
+    if(event is RulesPageNavEvent){
+      yield RulesPageNavigation();
+    }
   }
 }

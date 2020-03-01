@@ -2,11 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rule_engine_ttakeoff/bloc/login/AuthenticationBloc.dart';
 import 'package:rule_engine_ttakeoff/pages/rules/Drawer.dart';
 
 class NotificationGraphs extends StatefulWidget{
+  final AuthenticationBloc authBloc;
+  NotificationGraphs(this.authBloc);
   @override
   _NotificationGraphState createState() => _NotificationGraphState();
 }
@@ -17,9 +18,9 @@ class _NotificationGraphState extends State<NotificationGraphs> {
     List<charts.Series> seriesList = _createSampleData();
     bool animate = true;
     return Scaffold(
-      drawer: CustomDrawer(BlocProvider.of<AuthenticationBloc>(context)),
-      appBar: AppBar(
-        backgroundColor: Colors.teal,
+      drawer: CustomDrawer(widget.authBloc),
+      appBar: AppBar(        
+        backgroundColor: Color(0xff00BCD4),
         title: Text(
           "Notification Monitoring Dashboard",
           style: TextStyle(fontSize: 30),

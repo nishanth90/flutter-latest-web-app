@@ -53,7 +53,7 @@ class _LoginFormState extends State<LoginForm> {
                         child: Text(
                           "Email",
                           textAlign: TextAlign.left,
-                          style: TextStyle(color: Colors.lightBlue),
+                          style: TextStyle(color: Color(0xff00BCD4)),
                         ),
                       ),
                       SizedBox(
@@ -61,7 +61,7 @@ class _LoginFormState extends State<LoginForm> {
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width / 3.7,
-                        color: Colors.blue[50],
+                        color: Color(0xff4DD0E1),
                         child: TextField(
                           controller: _emailController,
                           obscureText: false,
@@ -72,18 +72,18 @@ class _LoginFormState extends State<LoginForm> {
                             contentPadding: EdgeInsets.all(10.0),
                             border: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.blue[50],
+                                color: Color(0xff4DD0E1),
                               ),
                               borderRadius: BorderRadius.circular(5.0),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.blue[50],
+                                color: Color(0xff4DD0E1),
                               ),
                               borderRadius: BorderRadius.circular(5.0),
                             ),
-                            hintText: "Email",
-                            fillColor: Colors.blue[50],
+                            hintText: "abc@example.com",
+                            fillColor: Color(0xff4DD0E1),
                           ),
                         ),
                       ),
@@ -100,9 +100,9 @@ class _LoginFormState extends State<LoginForm> {
                       Container(
                         width: 80.0,
                         child: Text(
-                          "Password",
+                          "password",
                           textAlign: TextAlign.left,
-                          style: TextStyle(color: Colors.lightBlue),
+                          style: TextStyle(color: Color(0xff00BCD4)),
                         ),
                       ),
                       SizedBox(
@@ -110,7 +110,7 @@ class _LoginFormState extends State<LoginForm> {
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width / 3.7,
-                        color: Colors.blue[50],
+                        color: Color(0xff4DD0E1),
                         child: TextField(
                           controller: _passwordController,
                           obscureText: true,
@@ -121,18 +121,18 @@ class _LoginFormState extends State<LoginForm> {
                             contentPadding: EdgeInsets.all(10.0),
                             border: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.blue[50],
+                                color: Color(0xff4DD0E1),
                               ),
                               borderRadius: BorderRadius.circular(5.0),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.blue[50],
+                                color: Color(0xff4DD0E1),
                               ),
                               borderRadius: BorderRadius.circular(5.0),
                             ),
                             hintText: "Password",
-                            fillColor: Colors.blue[50],
+                            fillColor: Color(0xff4DD0E1),
                           ),
                         ),
                       ),
@@ -149,12 +149,12 @@ class _LoginFormState extends State<LoginForm> {
                     width: 5.0,
                   ),
                   FlatButton(
-                    color: Colors.lightBlue,
+                    color: Color(0xffFDD835),
                     onPressed:
                         state is! LoginLoading ? _onLoginButtonPressed : null,
                     child: Text(
                       "Login",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.black),
                     ),
                   ),
                   Container(
